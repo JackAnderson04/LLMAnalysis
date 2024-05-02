@@ -1,0 +1,67 @@
+The starting F1 Macro score since project 2 for the TFIDF is 0.66 (+/- 0.03)
+
+Task 1:
+
+After running the different classifiers, these are the results I acheived:
+Multinomial Naive Bayes F1 Macro Score: 0.71 (+/- 0.01)
+Bernoulli Naive Bayes F1 Macro Score: 0.66 (+/- 0.02)
+k-Nearest Neighbors F1 Macro Score: 0.71 (+/- 0.04)
+Support Vector Machine F1 Macro Score: 0.81 (+/- 0.02)
+kNN with Normalization F1 Macro Score: 0.15 (+/- 0.03)
+SVM with Normalization F1 Macro Score: 0.74 (+/- 0.01)
+
+These are the results I got after incorporating and running the paired ttest:
+Multinomial Naive Bayes F1 Macro Score: Mean=0.71, Std Dev=0.01
+Bernoulli Naive Bayes F1 Macro Score: Mean=0.66, Std Dev=0.02
+T-statistic: 14.206624002375621, P-value: 0.00014255315741544858
+The test statistic:  14.206624002375623
+The p value:0.00007128
+=> Reject the null hypothesis
+
+Task 1.1:
+The kNN had a significant increase in F1 macro score from about .15 at the worst
+and .35 at the best, which is still quite low.
+Interestingly, the SVC started with a macro score of .8 which lowered to 
+.75 after normalization.
+
+Raising both the n_neighbors and n_splits from 5 to 10 had no effect on
+the kNN model. However, this change raised the macro score for the SVC from
+0.8 to 0.85 and had no effect on the normalized data.
+
+Task 1.2:
+For the Multinomial Naive Bayes Performance with Chi-squared, I graphed it after
+running 100, 200, 500, 1000, 2000, and 3000 features. Unsurprisingly, as K increased
+100 to 1000, the F1 macro score increased from .67 to .74. What I did not expect was
+that after 1000 features, the F1 macro score started to decrease slightly/flatten out
+at about .735.
+
+For the Mutual Information, the F1 macro score started out much lower at about
+.42 with 100 feautres but increased to .70 at both 2000 and 3000 features. For both
+of these, the number of features seems to provide diminishing results in terms of
+F1 macro score.
+
+The Bernoulli NB performance with chi-squared was very different. Its f1 macro score peaked at .88 with
+just 200 features but decreased as the number the number of features increased
+to .76 at 3000 features.
+
+Similar to the multinomial naive bayes with mutual information, the f1 macro score 
+peaked at 2000 features with a score of .75 and decreased as features increased.
+
+Task 2: Using llama 2 and the csv we were provided, this is the output I got:
+Based on the content of the message, the category it belongs to is "politics". 
+The post discusses the conflict between Israel and Lebanon, specifically the 
+bombing of Lebanese villages by Israeli forces and the moral implications of 
+such actions. The author expresses their opposition to the occupation of Lebanon 
+and the harm it causes to civilians, and criticizes the Israeli government's 
+justifications for the occupation. Therefore, the category for this post is 
+"politics".
+
+When comparing the LLM, Llama 2, and Multinomial Niave Bayes, NB smashed
+Llama with a difference in macro scores of .7 and ~.18 respectively.
+
+Average F1 Macro Score for LLM: 0.176420078753294
+T-statistic: -38.33817781278148
+P-value: 2.7647642747813155e-06
+
+The main reason I can think of that caused the LLM to perform so poorly is probably
+because it's poorly optimized to solve these types of problems.
